@@ -1,6 +1,6 @@
 <?php
 
-require_once("Item.php");
+/* require_once("Item.php");
 
 final class Pedido extends Item
 {
@@ -37,4 +37,4 @@ final class Pedido extends Item
 
         return $this;
     }
-}
+} */

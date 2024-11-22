@@ -1,48 +1,55 @@
 <?php
 
-require_once("modelos/Pedido.php");
+// require_once("modelos/Pedido.php");
 require_once("modelos/Prato.php");
 require_once("modelos/Bebida.php");
 require_once("modelos/Sobremesa.php");
 
-function listarPedido(array $pedidos) {
+// function listarMenu(array $menu) {
 
-    echo "ITENS CADASTRADOS À SEGUIR: \n";
+//     echo "ITENS CADASTRADOS À SEGUIR: \n";
 
-    $i = 1;
+//     $i = 1;
 
-    foreach($pedidos as $p) {
+//     foreach($menu as $m => $menu) {
 
-        echo $i . "- " . $p;
-        $i++;
+//         echo $i . "- " . $m;
+//         $i++;
 
-    }
+//     }
 
-    // if (count($pedidos) > 0) {
+//     if (count($menu) > 0) {
 
-    //     foreach ($pedidos as  $p)
+//         foreach ($menu as  $p)
 
-    //         printf($p);
+//             printf($m);
 
-    // } else
+//     } else
 
-    //     echo "Nenhum prato.\n";
+//         echo "Nenhum prato.\n";
 
-}
+// }
 
-$pedidos = array();
+// $menu = array();
 
-$menu = array();
+$m = array();
 
 function listarMenu($menu) {
 
-    foreach($menu as $m) {
+    // print_r($menu);
 
-        echo $m . "\n";
-
-    }
+    if (count($menu) > 0) {
+        foreach ($menu as $m)
+            print($m);
+    } else
+        echo "Nenhum prato.\n";
 
 }
+
+/*function listarPedeido($pedidos)
+{
+   ;
+}*/
 
 $estrogonofe = new Prato;
 $estrogonofe->setCalorias(145);
@@ -56,7 +63,7 @@ $risoto = new Prato;
 $risoto->setCalorias(350);
 $risoto->setCodItem(2);
 $risoto->setNomeItem("Risoto de Camarão");
-$risoto->setValorItem(45.50);
+$risoto->setValorItem(45.50);//
 
 array_push($m, $risoto);
 
@@ -99,8 +106,8 @@ array_push($m, $saladaFruta);
 
 $bolo = new Sobremesa;
 $bolo->setValorItem(12.90);
-$bolo->setLactoseFree(false);
-$bolo->setGlutenFree(false);
+$bolo->setLactoseFree(true);
+$bolo->setGlutenFree(true);
 $bolo->setCodItem(7);
 $bolo->setNomeItem("Bolo de Chocolate");
 
@@ -153,6 +160,9 @@ $opcao = 0;
 
 //Menu//
 
+//print_r($m);
+//exit;
+
 do {
 
     echo ("\n------------------ MENU -------------------\n");
@@ -163,9 +173,7 @@ do {
     echo ("\n---------- 0 - Fechar - Menu ------------\n");
     echo ("\n-------------------------------------------\n");
 
-    $opcao = readline("\nInforme uma opçaão: \n");
-
-    $listaPedido = array();
+    $opcao = readline("\nInforme uma opção: \n");
 
     switch ($opcao) {
 
@@ -211,7 +219,7 @@ do {
                  $novaBebida->setNomeItem(readline("Informe o nome dessa nova bebida: \n"));
                  $novaBebida->setValorItem(readline("Informe o preço dessa nova bebida: \n"));
 
-                 array_push($m, $novaBebida);
+                 array_push($menu, $novaBebida);
 
              }
 
@@ -219,19 +227,22 @@ do {
 
         case 2:
 
-            listarPedido($pedidos);
+            //print_r($m);
+//exit;
+
+            listarMenu($m);
 
             break;
 
         case 3:
 
-            listarPedido($pedidos);
+            listarMenu($m);
 
             $idx = readline("Informe o índice do pedido a ser excluído: ");
 
-            if($idx > 0 && $idx <= count($pedidos)) {
+            if($idx > 0 && $idx <= count($m)) {
 
-                array_splice($pedidos, $idx-1, 1);
+                array_splice($m, $idx-1, 1);
 
             } else {
 

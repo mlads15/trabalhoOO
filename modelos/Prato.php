@@ -6,9 +6,10 @@ final class Prato extends Item implements IDadoS {
 
     private int $calorias;
 
-    public function __toString()
-    {
-        return $this->calorias . "\n";
+    public function __toString() {
+
+        return "\nEsse prato chamado " . $this->getNomeItem() . " de código " . $this->getCodItem().  ", possui quantidade calórica de " . $this->getCalorias() . " e tem valor unitário de " . $this->getValorItem().  "\n";
+
     }
 
     public function getCalorias(): int {

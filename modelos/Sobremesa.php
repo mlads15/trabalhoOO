@@ -9,9 +9,10 @@ final class Sobremesa extends Item implements IDados
 
     private bool $lactoseFree;
 
-    public function __toString()
-    {
-        return $this->glutenFree . $this->lactoseFree . "\n";
+    public function __toString() {
+
+        return "\nEssa sobremesa chamada " . $this->getNomeItem() . " de código " . $this->getCodItem().  ", possui glúten \n( 1 - PARA SIM     E      2 - PARA NÃO):" . $this->glutenFree . " \ne possui lactose em seus ingredientes? \n( 1 - PARA SIM     E      2 - PARA NÃO)\n" . $this->lactoseFree . " e tem valor unitário de " . $this->getValorItem().  "\n";
+
     }
 
     public function isGlutenFree(): bool {
